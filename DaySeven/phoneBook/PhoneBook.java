@@ -7,6 +7,8 @@ public class PhoneBook {
 
    Scanner scanner = new Scanner(System.in);
 
+   Scanner input = new Scanner(System.in);
+
    ArrayList<String>names = new ArrayList<String>();
 
    ArrayList<String>phoneNumbers = new ArrayList<String>();
@@ -43,29 +45,42 @@ public class PhoneBook {
 
    System.out.println("Add Contact");
 
-   System.out.print("Enter first name: ");
-   String firstName = scanner.nextLine();
+   do {
 
-   scanner.nextLine();
+     System.out.print("Enter first name: ");
+     String firstName = input.nextLine();
+
+     System.out.print("Enter last name: ");
+     String lastName = input.nextLine();
    
-   System.out.print("Enter last name: ");
-   String lastName = scanner.nextLine();
-   
-   String fullName = firstName + " " + lastName;
-   names.add(fullName);
+     String fullName = firstName + " " + lastName;
+     names.add(fullName);
 
-   System.out.print("Enter phone number: ");
-   String phoneNumber = scanner.nextLine();
-   phoneNumbers.add(phoneNumber);
+     System.out.print("Enter phone number: ");
+     String phoneNumber = input.nextLine();
+     phoneNumbers.add(phoneNumber);
 
-   System.out.println("Saving >>>>>>>>>>>>>>>>>>>>>");
+     System.out.println("Saving >>>>>>>>>>>>>>>>>>>>>");
 
-   System.out.println("Saved Successfully!!");
+     System.out.println("Saved Successfully!!");
 
-       }
+     System.out.print("Do you want to save another contact? (yes/no): ");
+    } while (input.nextLine().equalsIgnoreCase("yes"));
 
+     System.out.println("Thank you for using phone book");
 
-  }
+     System.out.println(names);
+
+     System.out.println(phoneNumbers);
+
+     break;
+
+  default:
+     System.out.println("Invalid choice");
+     break;
+   }
+
+ }
 
 
 }
