@@ -78,7 +78,28 @@ public class PhoneBook {
   default:
      System.out.println("Invalid choice");
      break;
-   }
+     
+
+  case 2:
+
+     System.out.println("Remove / Delete Contact");
+
+     System.out.println("Lists of contacts saved");
+
+     for (int counter = 0; counter < names.size(); counter++) {
+
+          System.out.println((counter + 1) + " , "  + names.get(counter) + " -> " + phoneNumbers.get(counter));
+
+             }
+
+     System.out.print("Enter the contact name you want to remove / delete: ");
+     String removeContact = input.nextLine();
+
+     break;
+       }
+
+        
+
 
  }
 
