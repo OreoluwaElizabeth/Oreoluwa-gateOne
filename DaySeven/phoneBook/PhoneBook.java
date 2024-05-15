@@ -9,6 +9,10 @@ public class PhoneBook {
 
    Scanner input = new Scanner(System.in);
 
+   ArrayList<String>firstNames = new ArrayList<String>();
+
+   ArrayList<String>lastNames = new ArrayList<String>();
+
    ArrayList<String>names = new ArrayList<String>();
 
    ArrayList<String>phoneNumbers = new ArrayList<String>();
@@ -55,10 +59,12 @@ public class PhoneBook {
 
                 System.out.print("Enter first name: ");
                 String firstName = input.nextLine();
+                firstNames.add(firstName);
 
                 System.out.print("Enter last name: ");
                 String lastName = input.nextLine();
-   
+                lastNames.add(lastName);
+
                 String fullName = firstName + " " + lastName;
                 names.add(fullName);
 
@@ -141,12 +147,26 @@ public class PhoneBook {
             System.out.print("Enter the first name you are looking for: ");
             String firstName = input.nextLine();
 
-            for (int counted = 0; counted < names.size(); counted++) {
-                 System.out.println("Comparing: " + names.get(counted) + " with " + firstName);
-               if (names.get(counted).equals(firstName)) {
+            for(int counted = 0; counted < firstNames.size(); counted++) {
+
+               if(firstNames.get(counted).equalsIgnoreCase(firstName)) {
                   System.out.println((counted + 1) + " "  + names.get(counted) + " -> " + phoneNumbers.get(counted));
                    }
-                }
+             }
+            break;
+
+       case 5:
+
+            System.out.println("Find Contact By Last Name");
+
+            System.out.print("Enter the last name you are looking for: ");
+            String lastName = input.nextLine();
+
+            for (int countings = 0; countings < lastNames.size(); countings++) {
+               if (lastNames.get(countings).equalsIgnoreCase(lastName)) {
+                   System.out.println((countings + 1) + " " + names.get(countings) + " -> " + phoneNumbers.get(countings));
+                    }
+                 }
             break;
 
       default:
