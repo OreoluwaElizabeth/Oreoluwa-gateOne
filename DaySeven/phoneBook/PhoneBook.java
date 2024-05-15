@@ -169,10 +169,47 @@ public class PhoneBook {
                  }
             break;
 
+       case 6:
+
+            System.out.println("Edit Contact");
+
+            System.out.print("Select Contact to edit: ");
+            String editContact = input.nextLine();
+
+            int sentinel = -1;
+            for (int counters = 0; counters < names.size(); counters++) {
+               if (names.get(counters).equalsIgnoreCase(editContact)) {
+                   sentinel = counters;
+                   break;
+               }
+             }
+
+             if (sentinel != -1) {
+                 System.out.print("Enter the new first name: ");
+                 String newFirstName = input.nextLine();
+
+                 System.out.print("Enter the new last name: ");
+                 String newLastName = input.nextLine();
+
+                 String newFullName = newFirstName + " " + newLastName;
+                 names.set(sentinel, newFullName);
+
+                 System.out.print("Enter the new phone number: ");
+                 String newPhoneNumber = input.nextLine();
+                 phoneNumbers.set(sentinel, newPhoneNumber);
+                  
+                 System.out.println("Contact edited sucessfully.");
+                }
+
+             else {
+                 System.out.println("Contact not found");
+                }
+              break;
+            
       default:
           if (userChoice != 7)
               System.out.println("Invalid choice");
-          break;
+          break;   
 
      }
   } while (userChoice != 7);
