@@ -117,6 +117,38 @@ public class PhoneBook {
               }
             break;
 
+       case 3:
+
+            System.out.println("Find Contact By Phone Number");
+
+            System.out.print("Enter the number you are searching for: ");
+            String phoneNumber = input.nextLine();
+            
+            for (int counting = 0; counting < phoneNumbers.size(); counting++) {
+                if (phoneNumbers.get(counting).equals(phoneNumber)) {
+                   System.out.println((counting + 1) + " "  + names.get(counting) + " -> " + phoneNumbers.get(counting));
+                    }
+            else {
+                 System.out.print("Contact not found");
+                     }
+                 }
+            break;
+
+       case 4:
+
+            System.out.println("Find Contact By First Name");
+
+            System.out.print("Enter the first name you are looking for: ");
+            String firstName = input.nextLine();
+
+            for (int counted = 0; counted < names.size(); counted++) {
+                 System.out.println("Comparing: " + names.get(counted) + " with " + firstName);
+               if (names.get(counted).equals(firstName)) {
+                  System.out.println((counted + 1) + " "  + names.get(counted) + " -> " + phoneNumbers.get(counted));
+                   }
+                }
+            break;
+
       default:
           if (userChoice != 7)
               System.out.println("Invalid choice");
@@ -125,9 +157,8 @@ public class PhoneBook {
      }
   } while (userChoice != 7);
 
-}
 
-
+   }
 }
 
    
