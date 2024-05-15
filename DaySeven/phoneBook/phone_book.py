@@ -1,4 +1,4 @@
-first_nams = []
+first_names = []
 
 last_names = []
 
@@ -75,8 +75,8 @@ while user_choice != 7:
 			phone_number = input("Enter the number you are searching for: ")
 
 			for count in range(len(phone_numbers)):
-				if phone_number = phone_numbers[count]:
-					print(f"{count + 1} {names[count] -> {phone_numbers[count]}")
+				if phone_number == phone_numbers[count]:
+					print(f"{count + 1} {names[count]} -> {phone_numbers[count]}")
 					break
 			else:
 				print("Contact not found")
@@ -91,3 +91,32 @@ while user_choice != 7:
 
 		case 5:
 			print("Find Contact By Last Name")
+			last_name = input("Enter the last name you are looking for?: ")
+
+			for count in range(len(last_names)):
+				if last_name.lower() == last_names[count].lower():
+					print(f"{count + 1} {names[count]} -> {phone_numbers[count]}")
+
+		case 6:
+			print("Edit Contact")
+			contact_edit = input("Select Contact to edit: ")
+
+			if contact_edit in names:
+				index = names.index(contact_edit)
+				new_first_name = input("Enter the new first name: ")
+				new_last_name = input("Enter the new last name: ")
+				new_full_name = f"{new_first_name} {new_last_name}"
+				new_phone_number = input("Enter the new phone number: ")
+
+				names[index] = new_full_name
+				phone_numbers[index] = new_phone_number
+
+				print("Contact edited successfully.")
+			else:
+				print("Contact not found")
+
+		case 7:
+			break
+
+		case _:
+			print("Invalid choice")
