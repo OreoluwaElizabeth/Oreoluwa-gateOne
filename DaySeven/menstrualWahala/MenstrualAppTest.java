@@ -18,5 +18,15 @@ public void testThatCalculateNextPeriodDate() {
 
     }
 
+@Test
+public void testThatCalculateOvulation() {
+
+     LocalDate lastPeriodDate = LocalDate.parse("04/04/2024", DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+     LocalDate expectedOvulationDate = LocalDate.parse("04/18/2024", DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+     LocalDate actualOvulationDate = MenstrualApp.ThatCalculateOvulation(lastPeriodDate, 14);
+     assertEquals(expectedOvulationDate, actualOvulationDate);
+
+    }
+
 
   }
