@@ -10,6 +10,9 @@ public class MenstrualApp {
 
      System.out.println("Welcome to Menstrual App");
 
+     System.out.print("Hi sweethearts:), kindly enter your name: ");
+     String name = scanner.nextLine();
+
      System.out.print("Kindly enter your average cycle length: ");
      int length = scanner.nextInt();
 
@@ -38,13 +41,13 @@ public class MenstrualApp {
 
      LocalDate fertileWindowEnd = ovulationDate;
 
-     System.out.println("Your next period date is: " + nextPeriodDate);
+     System.out.println(name + " Your next period date is: " + nextPeriodDate);
 
-     System.out.println("Your ovulation date is: " + ovulationDate);
+     System.out.println(name + " Your ovulation date is: " + ovulationDate);
 
-     System.out.println("Your safe period is from: " + safePeriodStart + " to " + safePeriodEnd);
+     System.out.println(name + " Your safe period is from: " + safePeriodStart + " to " + safePeriodEnd);
 
-     System.out.println("You are most likely to get pregnant within this duration: " + fertileWindowStart + " to " + fertileWindowEnd);
+     System.out.println(name + " You are most likely to get pregnant within this duration: " + fertileWindowStart + " to " + fertileWindowEnd);
 
 
     }
