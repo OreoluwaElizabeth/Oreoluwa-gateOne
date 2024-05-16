@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 public class MenstrualApp {
 
@@ -27,13 +26,25 @@ public class MenstrualApp {
 
      int averageCycleLength = length;
 
-     long days = ChronoUnit.DAYS.between(lastPeriodDates, presentDate);
-
      LocalDate nextPeriodDate = lastPeriodDates.plusDays(averageCycleLength);
 
-     System.out.println("The days in between is: " + days);
+     LocalDate ovulationDate = lastPeriodDates.plusDays(14);
+
+     LocalDate safePeriodStart = ovulationDate.plusDays(1);
+
+     LocalDate safePeriodEnd = nextPeriodDate.minusDays(1);
+
+     LocalDate fertileWindowStart = lastPeriodDates.plusDays(10);
+
+     LocalDate fertileWindowEnd = ovulationDate;
 
      System.out.println("Your next period date is: " + nextPeriodDate);
+
+     System.out.println("Your ovulation date is: " + ovulationDate);
+
+     System.out.println("Your safe period is from: " + safePeriodStart + " to " + safePeriodEnd);
+
+     System.out.println("You are most likely to get pregnant within this duration: " + fertileWindowStart + " to " + fertileWindowEnd);
 
 
     }
