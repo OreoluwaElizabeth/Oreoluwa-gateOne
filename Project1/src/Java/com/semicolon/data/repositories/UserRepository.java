@@ -10,5 +10,5 @@ import java.util.List;
 public interface UserRepository extends MongoRepository<User, String> {
     boolean existsByEmail (String email);
     List<User> findByEmail(String email);
-    User findByUsername(String username);
+    List<User> findByUsername(String username);
 }

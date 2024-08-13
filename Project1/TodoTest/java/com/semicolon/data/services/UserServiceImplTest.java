@@ -1,9 +1,10 @@
 package com.semicolon.data.services;
 
-import com.semicolon.data.DTO.request.*;
-import com.semicolon.data.DTO.response.*;
+import com.semicolon.DTO.request.*;
+import com.semicolon.DTO.response.*;
 import com.semicolon.data.models.User;
 import com.semicolon.data.repositories.UserRepository;
+import com.semicolon.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -81,25 +82,33 @@ public class UserServiceImplTest {
     }
 
     @Test
-    public void testUpdate() {
-        UserRequest createUserRequest = new UserRequest();
-        createUserRequest.setUserName("Lizzy");
-        createUserRequest.setEmail("lizzy@gmail.com");
-        createUserRequest.setPassWord("password");
-        userService.signUp(createUserRequest);
-
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUsername("Lizzy");
-        loginRequest.setPassword("password");
-        LoginResponse loginResponse = userService.login(loginRequest);
-        assertNotNull(loginResponse);
+    public void testUpdateProfile() {
+        UserRequest userRequest = new UserRequest();
+        userRequest.setUserName("Lizzy");
+        userRequest.setEmail("lizzy@gmail.com");
+        userRequest.setPassWord("semicolon");
+        userService.signUp(userRequest);
 
         UpdateRequest updateRequest = new UpdateRequest();
-        updateRequest.setUsername("lizzy");
-        updateRequest.setPassword("12345678");
+        updateRequest.setUsername("Lizzy");
+        updateRequest.setNewUsername("Alero");
+        updateRequest.setPassword("newpassword");
         UpdateResponse updateResponse = userService.updateProfile(updateRequest);
-        assertNotNull(updateResponse);
+
+        assertTrue(updateResponse.isSuccess());
         assertEquals("Profile updated successfully", updateResponse.getMessage());
+    }
+
+    @Test
+    public void testUserNotFoundProfile() {
+        UpdateRequest updateRequest = new UpdateRequest();
+        updateRequest.setUsername("David");
+        updateRequest.setNewUsername("Samuel");
+        updateRequest.setPassword("qwerty01");
+        UpdateResponse updateResponse = userService.updateProfile(updateRequest);
+
+        assertFalse(updateResponse.isSuccess());
+        assertEquals("User not found", updateResponse.getMessage());
     }
 
     @Test
@@ -133,7 +142,7 @@ public class UserServiceImplTest {
         assertEquals("Account deleted successfully", response.getMessage());
         assertTrue(response.getSuccess());
 
-        User deletedUser = userRepository.findByUsername("Elizabeth");
-        assertNull(deletedUser);
+        List<User> deletedUsers = userRepository.findByUsername("Elizabeth");
+        assertTrue(deletedUsers.isEmpty());
     }
 }

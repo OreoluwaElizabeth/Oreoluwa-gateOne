@@ -1,15 +1,15 @@
 package com.semicolon.data.services;
 
-import com.semicolon.data.DTO.request.*;
-import com.semicolon.data.DTO.response.*;
+import com.semicolon.DTO.request.*;
+import com.semicolon.DTO.response.*;
 import com.semicolon.data.models.TodoTasks;
 import com.semicolon.data.repositories.TodoRepository;
+import com.semicolon.services.TodoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import static com.mongodb.assertions.Assertions.assertNotNull;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -99,11 +99,10 @@ public class TodoServiceImplTest {
         request.setTaskId("12");
         request.setTitle("Rehearsals");
         request.setDescription("Go to church for rehearsals");
-        UpdateResponse response = todoService.updateTaskDetails(request);
+        TaskUpdateResponse response = todoService.updateTaskDetails(request);
 
         assertNotNull(response);
         assertEquals("Task updated successfully", response.getMessage());
-        assertEquals("12", response.getTaskId());
 
         TodoTasks updatedTask = todoRepository.findById("12").orElse(null);
         assertNotNull(updatedTask);
